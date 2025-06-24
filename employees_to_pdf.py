@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import json
 from fpdf import FPDF
 
@@ -58,5 +58,4 @@ for emp in employees:
 
 # حفظ الملف
 pdf.output("employees_codes.pdf")
->>>>>>> 5736c5ba0be12afe508f50f6fda9bf4c6c2fd184
 print("تم إنشاء ملف employees_codes.pdf بنجاح!")
