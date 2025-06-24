@@ -23,6 +23,16 @@ const EmployeePage = () => {
       <p><b>Name:</b> {employee.name}</p>
       <p><b>Department:</b> {employee.department}</p>
       <p><b>Employee Code:</b> {employee.code}</p>
+      <p>
+        certificates:{" "}
+        <a
+          href={`/certificates/${employee.code}.pdf`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          certificates.pdf
+        </a>
+      </p>
       <div style={{ marginTop: 20, marginBottom: 20 }}>
         <QRCodeCanvas value={window.location.href} />
         <div>QR code for this page</div>
