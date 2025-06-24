@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import json
 import qrcode
 import os
@@ -70,5 +70,4 @@ for emp in employees:
     qr = qrcode.make(url)
     qr.save(filepath)
 
->>>>>>> 5736c5ba0be12afe508f50f6fda9bf4c6c2fd184
 print(f"تم حفظ جميع QR codes في مجلد {QR_DIR} (واحد لكل موظف).")

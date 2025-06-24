@@ -5,6 +5,10 @@ import { QRCodeCanvas } from "qrcode.react";
 const EmployeePage = () => {
   const { code } = useParams();
   const [employee, setEmployee] = useState(null);
+  const [imgError, setImgError] = useState(false);
+
+  const photoUrlJpg = `/employees_photos/${code}.jpg`;
+  const photoUrlPng = `/employees_photos/${code}.png`;
 
   useEffect(() => {
     fetch("/merged_employees.json")
@@ -20,6 +24,20 @@ const EmployeePage = () => {
   return (
     <div style={{ direction: "ltr", textAlign: "left", margin: 40 }}>
       <h2>Employee Information</h2>
+      {!imgError ? (
+        <img
+          src={photoUrlJpg}
+          alt={employee.name}
+          style={{ width: 200, height: 200, objectFit: "cover" }}
+          onError={e => {
+            if (e.target.src.endsWith(".jpg")) {
+              e.target.src = photoUrlPng;
+            } else {
+              setImgError(true);
+            }
+          }}
+        />
+      ) : null}
       <p><b>Name:</b> {employee.name}</p>
       <p><b>Department:</b> {employee.department}</p>
       <p><b>Employee Code:</b> {employee.code}</p>
