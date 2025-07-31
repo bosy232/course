@@ -47,7 +47,7 @@ const EmployeePage = () => {
     return (
       <div className="loading">
         <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>⏳</div>
-        <h2>جاري تحميل بيانات الموظف...</h2>
+        <h2>Loading employee data...</h2>
       </div>
     );
   }
@@ -56,8 +56,8 @@ const EmployeePage = () => {
     return (
       <div className="error">
         <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>❌</div>
-        <h2>لم يتم العثور على الموظف أو الرمز غير صحيح</h2>
-        <p>يرجى التحقق من الرابط والمحاولة مرة أخرى</p>
+        <h2>Employee not found or invalid code</h2>
+        <p>Please check the URL and try again</p>
       </div>
     );
   }
@@ -68,14 +68,25 @@ const EmployeePage = () => {
       <header className="header">
         <div className="header-content">
           <div className="logo">
-            <div className="logo-icon">P</div>
+            {/* Company Logo - Replace src with your actual logo path */}
+            <img 
+              src="/logo.png" 
+              alt="PICO Energy Logo" 
+              className="company-logo"
+              onError={(e) => {
+                // Fallback to text logo if image fails to load
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'flex';
+              }}
+            />
+            <div className="logo-icon" style={{ display: 'none' }}>P</div>
             <div className="logo-text">PICO Energy</div>
           </div>
           <nav>
             <ul className="nav-menu">
-              <li><a href="#profile">الملف الشخصي</a></li>
-              <li><a href="#courses">الدورات</a></li>
-              <li><a href="#certificates">الشهادات</a></li>
+              <li><a href="#profile">Profile</a></li>
+              <li><a href="#courses">Courses</a></li>
+              <li><a href="#certificates">Certificates</a></li>
             </ul>
           </nav>
         </div>
@@ -137,35 +148,35 @@ const EmployeePage = () => {
             )}
             <div className="profile-info">
               <h2>{employee.name}</h2>
-              <p><strong>القسم:</strong> {employee.department}</p>
-              <p><strong>الرمز:</strong> <span className="employee-code">{employee.code}</span></p>
+              <p><strong>Department:</strong> {employee.department}</p>
+              <p><strong>Employee Code:</strong> <span className="employee-code">{employee.code}</span></p>
             </div>
           </div>
           
           <div className="profile-body">
             {/* Certificates Section */}
             <div>
-              <h3 className="section-title">الشهادات والوثائق</h3>
+              <h3 className="section-title">Certificates & Documents</h3>
               <a
                 href={`/certificates/${employee.code}.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="certificates-link"
               >
-                📄 عرض الشهادات (PDF)
+                📄 View Certificates (PDF)
               </a>
             </div>
 
             {/* QR Code Section */}
             <div className="qr-section">
-              <h3>رمز QR للصفحة</h3>
+              <h3>Page QR Code</h3>
               <QRCodeCanvas 
                 value={window.location.href} 
                 size={200}
                 style={{ margin: '1rem auto', display: 'block' }}
               />
               <p style={{ marginTop: '1rem', color: 'var(--pico-gray)' }}>
-                يمكن مسح هذا الرمز للوصول السريع لهذه الصفحة
+                Scan this QR code for quick access to this page
               </p>
             </div>
           </div>
@@ -173,16 +184,16 @@ const EmployeePage = () => {
 
         {/* Courses Section */}
         <div id="courses">
-          <h3 className="section-title">الدورات التدريبية</h3>
+          <h3 className="section-title">Training Courses</h3>
           <div style={{ overflowX: 'auto' }}>
             <table className="courses-table">
               <thead>
                 <tr>
-                  <th>اسم الدورة</th>
-                  <th>تاريخ الدورة</th>
-                  <th>تاريخ انتهاء الصلاحية</th>
-                  <th>القسم</th>
-                  <th>الحالة</th>
+                  <th>Course Name</th>
+                  <th>Course Date</th>
+                  <th>Expiry Date</th>
+                  <th>Department</th>
+                  <th>Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -198,7 +209,7 @@ const EmployeePage = () => {
                       <td>{course.department}</td>
                       <td>
                         <span className={isExpired ? 'status-expired' : 'status-active'}>
-                          {isExpired ? 'منتهية الصلاحية' : 'نشطة'}
+                          {isExpired ? 'Expired' : 'Active'}
                         </span>
                       </td>
                     </tr>
@@ -211,7 +222,7 @@ const EmployeePage = () => {
       </main>
 
       {/* Back to Top Button */}
-      <a href="#top" className="back-to-top" title="العودة للأعلى">
+      <a href="#top" className="back-to-top" title="Back to Top">
         ↑
       </a>
     </div>

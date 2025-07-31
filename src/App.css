@@ -21,6 +21,7 @@ body {
   line-height: 1.6;
   color: var(--pico-black);
   background-color: var(--pico-white);
+  direction: ltr;
 }
 
 /* Header Styles */
@@ -43,6 +44,14 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+/* Company Logo Styles */
+.company-logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1); /* Makes logo white */
 }
 
 .logo-icon {
@@ -320,6 +329,14 @@ body {
   .courses-table th,
   .courses-table td {
     padding: 0.75rem 0.5rem;
+  }
+  
+  .company-logo {
+    height: 30px;
+  }
+  
+  .logo-text {
+    font-size: 1.2rem;
   }
 }
 
