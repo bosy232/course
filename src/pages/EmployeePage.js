@@ -89,7 +89,7 @@ const EmployeePage = () => {
                 <a href="#courses">Courses</a>
               </li>
               <li>
-                <a href="#certificates">Certificates</a>
+                <a href={`/certificates/${employee.code}.pdf`}>Certificates</a>
               </li>
             </ul>
           </nav>
@@ -162,10 +162,7 @@ const EmployeePage = () => {
               <p>
                 <strong>Department:</strong> {employee.department}
               </p>
-              <p>
-                <strong>Employee Code:</strong>{" "}
-                <span className="employee-code">{employee.code}</span>
-              </p>
+              
             </div>
           </div>
 
