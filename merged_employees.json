@@ -37,6 +37,185 @@
     ]
   },
   {
+    "name": "Hany Mahmoud Mohamed",
+    "code": "cac1b1f4",
+    "department": "Power Generation",
+    "courses": [
+      {
+        "course_name": "Manual Handling",
+        "date_of_course": "01 Jun 2025",
+        "date_of_expiry": "01 Jun 2027",
+        "department": "Power Generation"
+      },
+      {
+        "course_name": "Basic Fire Fighting",
+        "date_of_course": "02 Jun 2025",
+        "date_of_expiry": "02 Jun 2027",
+        "department": "Power Generation"
+      },
+      {
+        "course_name": "Basic First Aid",
+        "date_of_course": "31 May 2025",
+        "date_of_expiry": "31 May 2027",
+        "department": "Power Generation"
+      },
+      {
+        "course_name": "H2S & Breathing Apparatus",
+        "date_of_course": "03 Jun 2025",
+        "date_of_expiry": "03 Jun 2027",
+        "department": "Power Generation"
+      },
+      {
+        "course_name": "Safe Lifting Operations",
+        "date_of_course": "01 Jun 2025",
+        "date_of_expiry": "01 Jun 2027",
+        "department": "Power Generation"
+      }
+    ]
+  },
+  {
+    "name": "Hassan Hosny Abd El Ghafar",
+    "code": "4d70b6c0",
+    "department": "Production Solutions",
+    "courses": [
+      {
+        "course_name": "Manual Handling",
+        "date_of_course": "01 Jun 2025",
+        "date_of_expiry": "01 Jun 2027",
+        "department": "Production Solutions"
+      },
+      {
+        "course_name": "Basic Fire Fighting",
+        "date_of_course": "02 Jun 2025",
+        "date_of_expiry": "02 Jun 2027",
+        "department": "Production Solutions"
+      },
+      {
+        "course_name": "Basic First Aid",
+        "date_of_course": "31 May 2025",
+        "date_of_expiry": "31 May 2027",
+        "department": "Production Solutions"
+      },
+      {
+        "course_name": "H2S & Breathing Apparatus",
+        "date_of_course": "03 Jun 2025",
+        "date_of_expiry": "03 Jun 2027",
+        "department": "Production Solutions"
+      },
+      {
+        "course_name": "Safe Lifting Operations",
+        "date_of_course": "01 Jun 2025",
+        "date_of_expiry": "01 Jun 2027",
+        "department": "Production Solutions"
+      }
+    ]
+  },
+  {
+    "name": "Mohamed Ragab Ramadan",
+    "code": "c4e95151",
+    "department": "Production Solutions",
+    "courses": [
+      {
+        "course_name": "Manual Handling",
+        "date_of_course": "15 May 2025",
+        "date_of_expiry": "14 May 2028",
+        "department": "Production Solutions"
+      },
+      {
+        "course_name": "Safe Lifting Operations - 1 Day",
+        "date_of_course": "14 May 2025",
+        "date_of_expiry": "13 May 2028",
+        "department": "Production Solutions"
+      },
+      {
+        "course_name": "First Aid & CPR 1 Day",
+        "date_of_course": "13 May 2025",
+        "date_of_expiry": "12 May 2028",
+        "department": "Production Solutions"
+      },
+      {
+        "course_name": "Basic Fire Fighting",
+        "date_of_course": "12 May 2025",
+        "date_of_expiry": "11 May 2028",
+        "department": "Production Solutions"
+      },
+      {
+        "course_name": "H2S & Breathing Apparatus",
+        "date_of_course": "11 May 2025",
+        "date_of_expiry": "10 May 2027",
+        "department": "Production Solutions"
+      }
+    ]
+  },
+  {
+    "name": "Mohamed Sayed Gomaa",
+    "code": "67c34bdc",
+    "department": "Production Solutions",
+    "courses": [
+      {
+        "course_name": "Manual Handling",
+        "date_of_course": "01 Jun 2025",
+        "date_of_expiry": "01 Jun 2027",
+        "department": "Production Solutions"
+      },
+      {
+        "course_name": "Basic Fire Fighting",
+        "date_of_course": "02 Jun 2025",
+        "date_of_expiry": "02 Jun 2027",
+        "department": "Production Solutions"
+      },
+      {
+        "course_name": "Basic First Aid",
+        "date_of_course": "31 May 2025",
+        "date_of_expiry": "31 May 2027",
+        "department": "Production Solutions"
+      },
+      {
+        "course_name": "H2S & Breathing Apparatus",
+        "date_of_course": "03 Jun 2025",
+        "date_of_expiry": "03 Jun 2027",
+        "department": "Production Solutions"
+      },
+      {
+        "course_name": "Safe Lifting Operations",
+        "date_of_course": "01 Jun 2025",
+        "date_of_expiry": "01 Jun 2027",
+        "department": "Production Solutions"
+      }
+    ]
+  },
+  {
+    "name": "Youssef Ramadan Khalil",
+    "code": "42fd00dd",
+    "department": "Power Generation",
+    "courses": [
+      {
+        "course_name": "Manual Handling",
+        "date_of_course": "01 Jun 2025",
+        "date_of_expiry": "01 Jun 2027",
+        "department": "Power Generation"
+      },
+      {
+        "course_name": "Basic First Aid",
+        "date_of_course": "31 May 2025",
+        "date_of_expiry": "31 May 2027",
+        "department": "Power Generation"
+      },
+      {
+        "course_name": "H2S & Breathing Apparatus",
+        "date_of_course": "03 Jun 2025",
+        "date_of_expiry": "03 Jun 2027",
+        "department": "Power Generation"
+      },
+      {
+        "course_name": "Safe Lifting Operations",
+        "date_of_course": "01 Jun 2025",
+        "date_of_expiry": "01 Jun 2027",
+        "department": "Power Generation"
+      }
+    ]
+  },
+  {
     "name": "Ahmed Abdel Fattah Elsayed",
     "code": "7622a419",
     "department": "Production Solutions",
