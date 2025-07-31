@@ -1,6 +1,6 @@
 
 git add .
-git commit -m " صور الموظف في صفحة الموظف"
+git commit -m " new"
 git push
 
 
@@ -11,3 +11,10 @@ git commit -m "First commit"
 git branch -M main
 git remote add origin https://github.com/bosy232/course.git
 git push -u origin main
+
+
+Hany Mahmoud Mohamed
+Hassan Hosny Abd El Ghafar
+Mohamed Ragab Ramadan
+Mohamed Sayed Gomaa
+Youssef Ramadan Khalil
