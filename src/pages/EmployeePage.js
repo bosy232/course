@@ -70,7 +70,7 @@ const EmployeePage = () => {
           <div className="logo">
             {/* Company Logo - Replace src with your actual logo path */}
             <img
-              src=" /assets/images/pico-logo.png"
+              src=" /pico-Logo-tran.png"
               alt="PICO Energy Logo"
               className="company-logo"
               onError={(e) => {
