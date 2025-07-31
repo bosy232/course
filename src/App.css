@@ -1,38 +1,362 @@
-.App {
-  text-align: center;
+/* PICO Energy Design System */
+:root {
+  --pico-blue: #1e3a8a;
+  --pico-blue-light: #3b82f6;
+  --pico-red: #dc2626;
+  --pico-orange: #f97316;
+  --pico-gray: #6b7280;
+  --pico-gray-light: #f3f4f6;
+  --pico-white: #ffffff;
+  --pico-black: #111827;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--pico-black);
+  background-color: var(--pico-white);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Header Styles */
+.header {
+  background: linear-gradient(135deg, var(--pico-blue) 0%, #1e40af 100%);
+  padding: 1rem 0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(45deg, var(--pico-orange), var(--pico-blue));
+  border-radius: 50%;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
-.App-link {
-  color: #61dafb;
+.logo-text {
+  color: var(--pico-white);
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.nav-menu {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-menu a {
+  color: var(--pico-white);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+  color: var(--pico-orange);
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.8)),
+              url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f3f4f6" width="1200" height="600"/><circle cx="200" cy="150" r="50" fill="%23e5e7eb"/><circle cx="800" cy="300" r="80" fill="%23d1d5db"/><rect x="400" y="200" width="200" height="100" fill="%23e5e7eb"/></svg>');
+  background-size: cover;
+  background-position: center;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero-text h1 {
+  color: var(--pico-white);
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.hero-text .highlight {
+  color: var(--pico-red);
+}
+
+.hero-text p {
+  color: var(--pico-white);
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.hero-card {
+  background: var(--pico-white);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.hero-card h2 {
+  color: var(--pico-blue);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-card .pico-red {
+  color: var(--pico-red);
+}
+
+/* Main Content */
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.employee-profile {
+  background: var(--pico-white);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.profile-header {
+  background: linear-gradient(135deg, var(--pico-blue) 0%, #1e40af 100%);
+  color: var(--pico-white);
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--pico-white);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.profile-info p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 0.5rem;
+}
+
+.profile-info .employee-code {
+  background: var(--pico-red);
+  color: var(--pico-white);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.profile-body {
+  padding: 2rem;
+}
+
+.section-title {
+  color: var(--pico-blue);
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-title::before {
+  content: '';
+  width: 4px;
+  height: 24px;
+  background: var(--pico-red);
+  border-radius: 2px;
+}
+
+.certificates-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--pico-blue);
+  color: var(--pico-white);
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.certificates-link:hover {
+  background: var(--pico-blue-light);
+}
+
+.qr-section {
+  background: var(--pico-gray-light);
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.qr-section h3 {
+  color: var(--pico-blue);
+  margin-bottom: 1rem;
+}
+
+/* Courses Table */
+.courses-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--pico-white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.courses-table th {
+  background: var(--pico-blue);
+  color: var(--pico-white);
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+.courses-table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--pico-gray-light);
+}
+
+.courses-table tr:hover {
+  background: var(--pico-gray-light);
+}
+
+.courses-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Status Indicators */
+.status-active {
+  background: #10b981;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.status-expired {
+  background: var(--pico-red);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .hero-text h1 {
+    font-size: 2rem;
   }
+  
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .courses-table {
+    font-size: 0.875rem;
+  }
+  
+  .courses-table th,
+  .courses-table td {
+    padding: 0.75rem 0.5rem;
+  }
+}
+
+/* Loading and Error States */
+.loading {
+  text-align: center;
+  padding: 3rem;
+  color: var(--pico-gray);
+}
+
+.error {
+  text-align: center;
+  padding: 3rem;
+  color: var(--pico-red);
+  background: #fef2f2;
+  border-radius: 8px;
+  margin: 2rem;
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--pico-red);
+  color: var(--pico-white);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.back-to-top:hover {
+  transform: translateY(-2px);
 }
