@@ -16,12 +16,22 @@
   box-sizing: border-box;
 }
 
+/* Cross-browser compatibility */
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   color: var(--pico-black);
   background-color: var(--pico-white);
   direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 /* Header Styles */
@@ -29,6 +39,9 @@ body {
   background: linear-gradient(135deg, var(--pico-blue) 0%, #1e40af 100%);
   padding: 1rem 0;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .header-content {
@@ -38,12 +51,14 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 0 2rem;
+  flex-wrap: wrap;
 }
 
 .logo {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex-shrink: 0;
 }
 
 /* Company Logo Styles */
@@ -51,7 +66,8 @@ body {
   height: 40px;
   width: auto;
   object-fit: contain;
-  filter: brightness(0) invert(1); /* Makes logo white */
+  filter: brightness(0) invert(1);
+  -webkit-filter: brightness(0) invert(1);
 }
 
 .logo-icon {
@@ -79,6 +95,7 @@ body {
   display: flex;
   gap: 2rem;
   list-style: none;
+  flex-wrap: wrap;
 }
 
 .nav-menu a {
@@ -86,6 +103,7 @@ body {
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
+  white-space: nowrap;
 }
 
 .nav-menu a:hover {
@@ -172,6 +190,7 @@ body {
   display: flex;
   align-items: center;
   gap: 2rem;
+  flex-wrap: wrap;
 }
 
 .profile-photo {
@@ -181,11 +200,18 @@ body {
   object-fit: cover;
   border: 4px solid var(--pico-white);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.profile-info {
+  flex: 1;
+  min-width: 0;
 }
 
 .profile-info h2 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
+  word-wrap: break-word;
 }
 
 .profile-info p {
@@ -201,6 +227,7 @@ body {
   border-radius: 20px;
   display: inline-block;
   font-weight: bold;
+  word-break: break-all;
 }
 
 .profile-body {
@@ -215,6 +242,7 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .section-title::before {
@@ -223,6 +251,7 @@ body {
   height: 24px;
   background: var(--pico-red);
   border-radius: 2px;
+  flex-shrink: 0;
 }
 
 .certificates-link {
@@ -237,6 +266,7 @@ body {
   font-weight: 500;
   transition: background-color 0.3s ease;
   margin-bottom: 2rem;
+  white-space: nowrap;
 }
 
 .certificates-link:hover {
@@ -264,6 +294,7 @@ body {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  min-width: 600px;
 }
 
 .courses-table th {
@@ -272,11 +303,13 @@ body {
   padding: 1rem;
   text-align: left;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .courses-table td {
   padding: 1rem;
   border-bottom: 1px solid var(--pico-gray-light);
+  word-wrap: break-word;
 }
 
 .courses-table tr:hover {
@@ -295,6 +328,7 @@ body {
   border-radius: 12px;
   font-size: 0.875rem;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .status-expired {
@@ -304,56 +338,7 @@ body {
   border-radius: 12px;
   font-size: 0.875rem;
   font-weight: 500;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .hero-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .hero-text h1 {
-    font-size: 2rem;
-  }
-  
-  .profile-header {
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .courses-table {
-    font-size: 0.875rem;
-  }
-  
-  .courses-table th,
-  .courses-table td {
-    padding: 0.75rem 0.5rem;
-  }
-  
-  .company-logo {
-    height: 30px;
-  }
-  
-  .logo-text {
-    font-size: 1.2rem;
-  }
-}
-
-/* Loading and Error States */
-.loading {
-  text-align: center;
-  padding: 3rem;
-  color: var(--pico-gray);
-}
-
-.error {
-  text-align: center;
-  padding: 3rem;
-  color: var(--pico-red);
-  background: #fef2f2;
-  border-radius: 8px;
-  margin: 2rem;
+  white-space: nowrap;
 }
 
 /* Back to Top Button */
@@ -372,8 +357,335 @@ body {
   text-decoration: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
+  z-index: 1000;
 }
 
 .back-to-top:hover {
   transform: translateY(-2px);
+}
+
+/* Loading and Error States */
+.loading {
+  text-align: center;
+  padding: 3rem;
+  color: var(--pico-gray);
+}
+
+.error {
+  text-align: center;
+  padding: 3rem;
+  color: var(--pico-red);
+  background: #fef2f2;
+  border-radius: 8px;
+  margin: 2rem;
+}
+
+/* Responsive Design - Tablets */
+@media (max-width: 768px) {
+  .header-content {
+    padding: 0 1rem;
+  }
+  
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+  
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-text p {
+    font-size: 1rem;
+  }
+  
+  .hero-card {
+    padding: 1.5rem;
+  }
+  
+  .main-content {
+    padding: 2rem 1rem;
+  }
+  
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+  
+  .profile-photo {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .profile-info h2 {
+    font-size: 1.5rem;
+  }
+  
+  .profile-body {
+    padding: 1.5rem;
+  }
+  
+  .courses-table {
+    font-size: 0.875rem;
+    min-width: 500px;
+  }
+  
+  .courses-table th,
+  .courses-table td {
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .company-logo {
+    height: 30px;
+  }
+  
+  .logo-text {
+    font-size: 1.2rem;
+  }
+  
+  .nav-menu {
+    gap: 1rem;
+  }
+  
+  .back-to-top {
+    width: 45px;
+    height: 45px;
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+}
+
+/* Mobile Phones */
+@media (max-width: 480px) {
+  .header-content {
+    padding: 0 0.75rem;
+  }
+  
+  .hero-section {
+    min-height: 300px;
+  }
+  
+  .hero-text h1 {
+    font-size: 1.75rem;
+  }
+  
+  .hero-text p {
+    font-size: 0.9rem;
+  }
+  
+  .hero-card {
+    padding: 1rem;
+  }
+  
+  .hero-card h2 {
+    font-size: 1.25rem;
+  }
+  
+  .main-content {
+    padding: 1.5rem 0.75rem;
+  }
+  
+  .profile-header {
+    padding: 1rem;
+  }
+  
+  .profile-photo {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .profile-info h2 {
+    font-size: 1.25rem;
+  }
+  
+  .profile-info p {
+    font-size: 1rem;
+  }
+  
+  .profile-body {
+    padding: 1rem;
+  }
+  
+  .section-title {
+    font-size: 1.25rem;
+  }
+  
+  .courses-table {
+    min-width: 400px;
+    font-size: 0.8rem;
+  }
+  
+  .courses-table th,
+  .courses-table td {
+    padding: 0.5rem 0.25rem;
+  }
+  
+  .certificates-link {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .qr-section {
+    padding: 1rem;
+  }
+  
+  .back-to-top {
+    width: 40px;
+    height: 40px;
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
+
+/* Small Mobile Phones */
+@media (max-width: 360px) {
+  .header-content {
+    padding: 0 0.5rem;
+  }
+  
+  .logo-text {
+    font-size: 0.9rem;
+  }
+  
+  .nav-menu {
+    gap: 0.5rem;
+  }
+  
+  .nav-menu a {
+    font-size: 0.8rem;
+  }
+  
+  .hero-text h1 {
+    font-size: 1.25rem;
+  }
+  
+  .hero-text p {
+    font-size: 0.8rem;
+  }
+  
+  .hero-card h2 {
+    font-size: 1rem;
+  }
+  
+  .hero-card p {
+    font-size: 0.8rem;
+  }
+  
+  .profile-photo {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .profile-info h2 {
+    font-size: 1rem;
+  }
+  
+  .profile-info p {
+    font-size: 0.8rem;
+  }
+  
+  .section-title {
+    font-size: 1rem;
+  }
+  
+  .courses-table {
+    min-width: 300px;
+    font-size: 0.7rem;
+  }
+  
+  .courses-table th,
+  .courses-table td {
+    padding: 0.3rem 0.15rem;
+  }
+  
+  .certificates-link {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.75rem;
+  }
+  
+  .back-to-top {
+    width: 30px;
+    height: 30px;
+    font-size: 0.7rem;
+  }
+}
+
+/* Landscape Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero-section {
+    min-height: 200px;
+  }
+  
+  .hero-text h1 {
+    font-size: 1.5rem;
+  }
+  
+  .hero-text p {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-card {
+    padding: 1rem;
+  }
+  
+  .main-content {
+    padding: 1rem 2rem;
+  }
+  
+  .profile-header {
+    padding: 1rem;
+  }
+  
+  .profile-photo {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .profile-body {
+    padding: 1rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .header,
+  .hero-section,
+  .back-to-top {
+    display: none !important;
+  }
+  
+  .main-content {
+    padding: 0 !important;
+  }
+  
+  .employee-profile {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+  
+  .courses-table {
+    min-width: auto !important;
+  }
+  
+  .courses-table th,
+  .courses-table td {
+    padding: 0.5rem !important;
+  }
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .back-to-top:hover {
+    transform: none;
+  }
 }

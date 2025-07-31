@@ -7,6 +7,7 @@ const EmployeePage = () => {
   const [employee, setEmployee] = useState(null);
   const [imgError, setImgError] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
   const photoUrlJpg = `/employees_photos/${code}.jpg`;
   const photoUrlPng = `/employees_photos/${code}.png`;
@@ -25,6 +26,18 @@ const EmployeePage = () => {
         setLoading(false);
       });
   }, [code]);
+
+  // Check if device is mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Function to check if course is expired
   const isCourseExpired = (expiryDate) => {
@@ -64,33 +77,34 @@ const EmployeePage = () => {
 
   return (
     <div>
+      {/* Skip to content link for accessibility */}
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
+
       {/* Header */}
       <header className="header">
         <div className="header-content">
           <div className="logo">
             {/* Company Logo - Replace src with your actual logo path */}
-            <img
-              src=" /pico-Logo-tran.png"
-              alt="PICO Energy Logo"
+            <img 
+              src="/logo.png" 
+              alt="PICO Energy Logo" 
               className="company-logo"
               onError={(e) => {
                 // Fallback to text logo if image fails to load
-                e.target.style.display = "none";
-                e.target.nextSibling.style.display = "flex";
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'flex';
               }}
             />
+            <div className="logo-icon" style={{ display: 'none' }}>P</div>
+            <div className="logo-text">PICO Energy</div>
           </div>
           <nav>
             <ul className="nav-menu">
-              <li>
-                <a href="#profile">Profile</a>
-              </li>
-              <li>
-                <a href="#courses">Courses</a>
-              </li>
-              <li>
-                <a href={`/certificates/${employee.code}.pdf`}>Certificates</a>
-              </li>
+              <li><a href="#profile">Profile</a></li>
+              <li><a href="#courses">Courses</a></li>
+              <li><a href="#certificates">Certificates</a></li>
             </ul>
           </nav>
         </div>
@@ -106,36 +120,32 @@ const EmployeePage = () => {
               <span className="highlight">Professional Excellence</span>
             </h1>
             <p>
-              Access comprehensive employee information, training records, and
-              professional certifications in our integrated employee management
-              system.
+              Access comprehensive employee information, training records, and professional certifications
+              in our integrated employee management system.
             </p>
           </div>
           <div className="hero-card">
-            <h2>
-              Welcome to <span className="pico-red">PICO Energy</span>
-            </h2>
+            <h2>Welcome to <span className="pico-red">PICO Energy</span></h2>
             <p>
-              Our employee portal provides secure access to training records,
-              certifications, and professional development information. All data
-              is maintained with the highest standards of confidentiality and
-              accuracy.
+              Our employee portal provides secure access to training records, certifications, 
+              and professional development information. All data is maintained with the highest 
+              standards of confidentiality and accuracy.
             </p>
           </div>
         </div>
       </section>
 
       {/* Main Content */}
-      <main className="main-content">
+      <main className="main-content" id="main-content">
         {/* Employee Profile */}
         <div className="employee-profile" id="profile">
           <div className="profile-header">
             {!imgError ? (
               <img
                 src={photoUrlJpg}
-                alt={employee.name}
+                alt={`${employee.name} profile photo`}
                 className="profile-photo"
-                onError={(e) => {
+                onError={e => {
                   if (e.target.src.endsWith(".jpg")) {
                     e.target.src = photoUrlPng;
                   } else {
@@ -144,28 +154,23 @@ const EmployeePage = () => {
                 }}
               />
             ) : (
-              <div
-                className="profile-photo"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "3rem",
-                  backgroundColor: "var(--pico-gray-light)",
-                }}
-              >
+              <div className="profile-photo" style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center',
+                fontSize: '3rem',
+                backgroundColor: 'var(--pico-gray-light)'
+              }}>
                 👤
               </div>
             )}
             <div className="profile-info">
               <h2>{employee.name}</h2>
-              <p>
-                <strong>Department:</strong> {employee.department}
-              </p>
-              
+              <p><strong>Department:</strong> {employee.department}</p>
+              <p><strong>Employee Code:</strong> <span className="employee-code">{employee.code}</span></p>
             </div>
           </div>
-
+          
           <div className="profile-body">
             {/* Certificates Section */}
             <div>
@@ -175,6 +180,7 @@ const EmployeePage = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="certificates-link"
+                aria-label={`View certificates for ${employee.name}`}
               >
                 📄 View Certificates (PDF)
               </a>
@@ -183,12 +189,13 @@ const EmployeePage = () => {
             {/* QR Code Section */}
             <div className="qr-section">
               <h3>Page QR Code</h3>
-              <QRCodeCanvas
-                value={window.location.href}
-                size={200}
-                style={{ margin: "1rem auto", display: "block" }}
+              <QRCodeCanvas 
+                value={window.location.href} 
+                size={isMobile ? 150 : 200}
+                style={{ margin: '1rem auto', display: 'block' }}
+                aria-label="QR code for this page"
               />
-              <p style={{ marginTop: "1rem", color: "var(--pico-gray)" }}>
+              <p style={{ marginTop: '1rem', color: 'var(--pico-gray)' }}>
                 Scan this QR code for quick access to this page
               </p>
             </div>
@@ -198,15 +205,15 @@ const EmployeePage = () => {
         {/* Courses Section */}
         <div id="courses">
           <h3 className="section-title">Training Courses</h3>
-          <div style={{ overflowX: "auto" }}>
-            <table className="courses-table">
+          <div className="table-wrapper">
+            <table className="courses-table" role="table" aria-label="Employee training courses">
               <thead>
                 <tr>
-                  <th>Course Name</th>
-                  <th>Course Date</th>
-                  <th>Expiry Date</th>
-                  <th>Department</th>
-                  <th>Status</th>
+                  <th scope="col">Course Name</th>
+                  <th scope="col">Course Date</th>
+                  <th scope="col">Expiry Date</th>
+                  <th scope="col">Department</th>
+                  <th scope="col">Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -221,12 +228,11 @@ const EmployeePage = () => {
                       <td>{formatDate(course.date_of_expiry)}</td>
                       <td>{course.department}</td>
                       <td>
-                        <span
-                          className={
-                            isExpired ? "status-expired" : "status-active"
-                          }
+                        <span 
+                          className={isExpired ? 'status-expired' : 'status-active'}
+                          aria-label={isExpired ? 'Course expired' : 'Course active'}
                         >
-                          {isExpired ? "Expired" : "Active"}
+                          {isExpired ? 'Expired' : 'Active'}
                         </span>
                       </td>
                     </tr>
@@ -239,7 +245,12 @@ const EmployeePage = () => {
       </main>
 
       {/* Back to Top Button */}
-      <a href="#top" className="back-to-top" title="Back to Top">
+      <a 
+        href="#top" 
+        className="back-to-top" 
+        title="Back to Top"
+        aria-label="Back to top of page"
+      >
         ↑
       </a>
     </div>
