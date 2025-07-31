@@ -1,0 +1,13 @@
+
+git add .
+git commit -m " صور الموظف في صفحة الموظف"
+git push
+
+
+
+git init
+git add .
+git commit -m "First commit"
+git branch -M main
+git remote add origin https://github.com/bosy232/course.git
+git push -u origin main
