@@ -97,8 +97,6 @@ const EmployeePage = () => {
                 e.target.nextSibling.style.display = 'flex';
               }}
             />
-            <div className="logo-icon" style={{ display: 'none' }}>P</div>
-            <div className="logo-text">PICO Energy</div>
           </div>
           <nav>
             <ul className="nav-menu">
@@ -167,7 +165,6 @@ const EmployeePage = () => {
             <div className="profile-info">
               <h2>{employee.name}</h2>
               <p><strong>Department:</strong> {employee.department}</p>
-              <p><strong>Employee Code:</strong> <span className="employee-code">{employee.code}</span></p>
             </div>
           </div>
           
