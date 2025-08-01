@@ -143,7 +143,7 @@ const EmployeePage = () => {
             {!imgError ? (
               <img
                 src={photoUrlJpg}
-                alt={`${employee.name}`}
+                alt={`${employee.name} profile photo`}
                 className="profile-photo"
                 onError={e => {
                   if (e.target.src.endsWith(".jpg")) {
