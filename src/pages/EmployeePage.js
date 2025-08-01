@@ -102,7 +102,7 @@ const EmployeePage = () => {
             <ul className="nav-menu">
               <li><a href="#profile">Profile</a></li>
               <li><a href="#courses">Courses</a></li>
-              <li><a href="#certificates">Certificates</a></li>
+              <li><a href={`/certificates/${employee.code}.pdf`}>Certificates</a></li>
             </ul>
           </nav>
         </div>
