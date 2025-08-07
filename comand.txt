@@ -13,8 +13,10 @@ git remote add origin https://github.com/bosy232/course.git
 git push -u origin main
 
 
-Hany Mahmoud Mohamed
-Hassan Hosny Abd El Ghafar
-Mohamed Ragab Ramadan
-Mohamed Sayed Gomaa
-Youssef Ramadan Khalil
+merged_employees.json  الاساسي الموجود في ملف public
+Safety courses.json    الجديد
+python search_employees.py  سيرش عن موظفين
+python add_safety_employees.py اضافة الموظفين بعد السيرش
+python update_public_merged.py تحديث الملف بعد الاضافة ليظهر
+python safety_to_merged_format.py تحويل الملف الى نفس التنسيق الخاص بالملف الاساسي
+python compare_employees.py مقارنة بين الملف الاساسي والجديد
